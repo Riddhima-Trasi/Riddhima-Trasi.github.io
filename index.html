@@ -1,16 +1,20 @@
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Riddhima's Portfolio | Rutgers Business School</title>
+    <title>Riddhima's Portfolio | Rutgers Business School (BAIT & Finance)</title>
+    
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <script>
         tailwind.config = {
@@ -18,7 +22,7 @@
                 extend: {
                     colors: {
                         rutgers: {
-                            DEFAULT: '#cc0033', // Official Rutgers Scarlet Red
+                            DEFAULT: '#cc0033', // Official Rutgers Scarlet
                             dark: '#990024',
                             light: '#fdf2f4'
                         }
@@ -31,6 +35,7 @@
             }
         }
     </script>
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -40,21 +45,37 @@
         h1, h2, h3, h4, .font-heading {
             font-family: 'Plus Jakarta Sans', sans-serif;
         }
+        
+        /* Toast notification animation */
+        @keyframes slideDown {
+            0% { transform: translate(-50%, -100%); opacity: 0; }
+            100% { transform: translate(-50%, 0); opacity: 1; }
+        }
+        .toast-animate {
+            animation: slideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
     </style>
 </head>
-<body class="bg-white text-slate-900 antialiased selection:bg-rutgers selection:text-white flex flex-col min-h-screen">
+<body class="bg-white text-slate-900 antialiased selection:bg-rutgers selection:text-white flex flex-col min-h-screen relative">
 
-    <!-- Navigation Bar -->
+    <!-- Toast Banner for Clipboard Feedback -->
+    <div id="toastNotification" class="fixed top-5 left-1/2 -translate-x-1/2 z-50 hidden toast-animate">
+        <div class="bg-slate-900 text-white px-5 py-3 rounded-full shadow-2xl flex items-center gap-3 border border-slate-700">
+            <span class="w-6 h-6 rounded-full bg-emerald-500 text-slate-900 flex items-center justify-center font-bold text-xs">✓</span>
+            <span class="text-xs sm:text-sm font-semibold">Copied <span class="text-rutgers-light font-mono">rmtrasi@gmail.com</span> to clipboard!</span>
+        </div>
+    </div>
+
     <header class="sticky top-0 z-40 w-full bg-white/90 backdrop-blur-md border-b border-slate-100">
         <div class="max-w-6xl mx-auto px-6 sm:px-8 h-20 flex items-center justify-between">
             
             <!-- Logo / Branding -->
             <a href="#" class="flex items-center gap-3 font-heading text-lg font-bold tracking-tight text-slate-900 group">
-                <span class="text-rutgers font-extrabold text-xl tracking-wider px-2 py-0.5 rounded bg-rutgers-light/80 group-hover:bg-rutgers group-hover:text-white transition-colors duration-200">RBS</span>
+                <span class="text-rutgers font-extrabold text-xl tracking-wider px-2.5 py-0.5 rounded bg-rutgers-light/80 group-hover:bg-rutgers group-hover:text-white transition-colors duration-200">RBS</span>
                 <span class="border-l border-slate-300 pl-3 text-slate-800">Riddhima's Portfolio</span>
             </a>
 
-            <!-- Right Nav Links & Resume CTA -->
+            <!-- Nav Links & Resume CTA -->
             <div class="flex items-center gap-6 text-sm font-medium">
                 <nav class="hidden md:flex items-center gap-8 text-slate-600">
                     <a href="#about" class="hover:text-rutgers transition-colors">About</a>
@@ -62,38 +83,42 @@
                     <a href="#projects" class="hover:text-rutgers transition-colors">Projects</a>
                 </nav>
                 
-                <a href="#resume" onclick="handleResumeDownload(event)" class="px-5 py-2.5 rounded-full bg-slate-900 text-white font-semibold text-xs sm:text-sm hover:bg-slate-800 transition-all shadow-sm hover:shadow">
-                    Download Resume
+                <a href="#resume" onclick="handleResumeDownload(event)" class="px-5 py-2.5 rounded-full bg-slate-900 text-white font-semibold text-xs sm:text-sm hover:bg-slate-800 transition-all shadow-sm hover:shadow flex items-center gap-2">
+                    <i class="fa-solid fa-download text-xs"></i> Download Resume
                 </a>
             </div>
         </div>
     </header>
 
     <main class="flex-grow">
-        <!-- Hero Section matching reference image layout -->
-        <section id="about" class="max-w-6xl mx-auto px-6 sm:px-8 pt-12 sm:pt-16 pb-20">
+        <section id="about" class="max-w-6xl mx-auto px-6 sm:px-8 pt-12 sm:pt-16 pb-16">
             <div class="grid md:grid-cols-12 gap-10 lg:gap-16 items-start">
                 
-                <!-- Left Column: Profile Card -->
+                <!-- Left Column: Profile Avatar & Details -->
                 <div class="md:col-span-4 flex flex-col items-center text-center">
-                    <div class="relative w-44 h-44 sm:w-48 sm:h-48 rounded-full overflow-hidden p-1 bg-gradient-to-b from-slate-200 to-slate-100 shadow-md mb-5">
-                        <img src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?auto=format&fit=crop&w=400&q=80" 
-                             alt="Riddhima - Rutgers Business School" 
-                             class="w-full h-full object-cover rounded-full">
+                    <!-- Headshot Avatar -->
+                    <div class="relative w-48 h-48 sm:w-52 sm:h-52 rounded-full overflow-hidden p-1.5 bg-gradient-to-b from-slate-200 to-slate-300 shadow-md mb-5 flex items-center justify-center bg-white">
+                        <img 
+                            src="Riddhima Headshot.jpg" 
+                            alt="Riddhima - Rutgers Business School" 
+                            class="w-full h-full object-cover rounded-full"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x400/cc0033/ffffff?text=Riddhima';"
+                        />
                     </div>
                     
                     <h2 class="text-2xl font-bold font-heading text-slate-900">Riddhima</h2>
                     <p class="text-rutgers font-semibold text-sm mt-0.5">Rutgers Business School</p>
-                    <p class="text-xs text-slate-500 font-medium mt-1">Class of 2029 </p>
+                    <p class="text-xs text-slate-500 font-medium mt-0.5">Finance & BAIT Major • Class of 2029</p>
                 </div>
 
-                <!-- Right Column: Headline, Personal Statement & CTAs -->
+                <!-- Right Column: Headline, Personal Statement & Actions -->
                 <div class="md:col-span-8 space-y-6">
                     
-                    <!-- Small Pill Badge -->
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-red-50 text-rutgers text-xs font-semibold tracking-wide border border-red-100">
-                        <span class="w-1.5 h-1.5 rounded-full bg-rutgers"></span>
-                        Currently: Exploring Majors
+                    <!-- Top Status Badge -->
+                    <div>
+                        <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-red-50 text-rutgers text-xs font-semibold tracking-wide border border-red-100">
+                            Currently: Exploring BAIT & Finance
+                        </span>
                     </div>
 
                     <!-- Impactful Headline -->
@@ -101,21 +126,30 @@
                         Multi-disciplinary business strategy, rooted at Rutgers.
                     </h1>
 
-                    <!-- Required Personal Statement -->
-                    <div class="p-5 rounded-2xl bg-slate-50/80 border border-slate-100 text-slate-700 leading-relaxed text-base sm:text-lg">
+                    <!-- Welcome & Personal Statement -->
+                    <div class="text-slate-600 leading-relaxed text-base sm:text-lg space-y-4">
                         <p>
-                            <strong class="font-semibold text-slate-900">Personal Statement:</strong> Hello! My name is Riddhima Trasi. I am a sophomore at the Rutgers Honors College, and I am a Finance and Business Analytics and Information Technology major. Using the diverse curriculum at Rutgers, I hope to develop a versatile skill set in finance, marketing, technology, and analytics. My goal is to become a financial analyst.
+                            Welcome! I'm Riddhima, an undergraduate student at Rutgers Business School majoring in Finance and Business Analytics & Information Technology (BAIT). I leverage the diverse curriculum at Rutgers to develop versatile skills across technology, market strategy, and leadership.
                         </p>
+                        
+                        <!-- Personal Statement Card -->
+                        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200/80 text-slate-800 text-sm sm:text-base leading-relaxed">
+                            <span class="block text-xs font-bold text-rutgers uppercase tracking-wider mb-1">Personal Statement</span>
+                            <p class="font-medium text-slate-900">
+                                An ambitious Finance and Business Analytics & Information Technology (BAIT) student at Rutgers Business School leveraging data-driven insights, technology strategy, and collaborative leadership to help solve complex business challenges and drive operational value.
+                            </p>
+                        </div>
                     </div>
 
                     <!-- Action Buttons -->
                     <div class="flex flex-wrap items-center gap-4 pt-2">
-                        <button onclick="openContactModal()" class="px-6 py-3 rounded-full bg-white border border-slate-300 text-slate-800 text-sm font-semibold hover:border-slate-400 hover:bg-slate-50 transition-all shadow-sm">
-                            Email Me
+                        <!-- Primary Email Button -->
+                        <button type="button" onclick="handleEmailClick()" class="px-6 py-2.5 rounded-full bg-rutgers hover:bg-rutgers-dark text-white text-xs sm:text-sm font-semibold transition-all shadow-sm hover:shadow flex items-center gap-2 cursor-pointer active:scale-95">
+                            <i class="fa-regular fa-envelope"></i> Email Me
                         </button>
-                        
-                        <a href="www.linkedin.com/in/riddhima-trasi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-sm font-semibold text-slate-700 hover:text-rutgers transition-colors px-2 py-2">
-                            LinkedIn Profile <i class="fa-solid fa-arrow-right text-xs"></i>
+
+                        <a href="https://www.linkedin.com/in/riddhima-trasi" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-rutgers transition-colors px-4 py-2.5">
+                            LinkedIn Profile <span class="text-xs">→</span>
                         </a>
                     </div>
 
@@ -124,68 +158,76 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
-        <section id="skills" class="border-t border-slate-100 bg-slate-50/50 py-16">
+        <section id="skills" class="py-16 bg-slate-50/70 border-y border-slate-100">
             <div class="max-w-6xl mx-auto px-6 sm:px-8">
                 
                 <div class="max-w-2xl mb-10">
-                    <h2 class="text-2xl sm:text-3xl font-bold font-heading text-slate-900">Core Technical & Professional Skills</h2>
-                    <p class="text-slate-600 text-sm sm:text-base mt-2">Key competencies built through rigorous coursework, analytical projects, and practical business case studies.</p>
+                    <span class="text-xs font-bold text-rutgers uppercase tracking-widest">Capabilities</span>
+                    <h2 class="text-2xl sm:text-3xl font-bold font-heading text-slate-900 mt-1">Core Skills & Strengths</h2>
+                    <p class="text-slate-600 text-sm sm:text-base mt-2">Key analytical, leadership, and interpersonal competencies applied across academic and professional initiatives.</p>
                 </div>
 
-                <!-- Skills Categories Grid -->
+                <!-- Exactly 4 Core Non-Technical Skills -->
                 <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     
-                    <!-- Skill Group 1 -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200/70 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="w-10 h-10 rounded-xl bg-rutgers-light text-rutgers flex items-center justify-center text-lg mb-4">
-                            <i class="fa-solid fa-chart-line"></i>
+                    <!-- Skill 1: Business Analytics & Data Mining -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:border-slate-300 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-rutgers-light text-rutgers flex items-center justify-center text-lg mb-4">
+                                <i class="fa-solid fa-chart-pie"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 mb-2">Business Analytics & Data Mining</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">Translating raw data into meaningful patterns to support data-informed business decision making and operational strategy.</p>
                         </div>
-                        <h3 class="font-bold text-slate-900 mb-3">Finance & Strategy</h3>
-                        <ul class="space-y-2 text-sm text-slate-600">
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rutgers"></span> Financial Modeling</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rutgers"></span> Valuation Analysis</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rutgers"></span> Corporate Strategy</li>
-                        </ul>
+                        <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100">
+                            <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium">Data Mining</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium">Quantitative Analysis</span>
+                        </div>
                     </div>
 
-                    <!-- Skill Group 2 -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200/70 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="w-10 h-10 rounded-xl bg-rutgers-light text-rutgers flex items-center justify-center text-lg mb-4">
-                            <i class="fa-solid fa-database"></i>
+                    <!-- Skill 2: Academic & Student Leadership -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:border-slate-300 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-rutgers-light text-rutgers flex items-center justify-center text-lg mb-4">
+                                <i class="fa-solid fa-people-roof"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 mb-2">Academic & Student Leadership</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">Representing the BAIT student body through the RBSGA, facilitating department dialogue, and organizing community initiatives.</p>
                         </div>
-                        <h3 class="font-bold text-slate-900 mb-3">Analytics & Tech</h3>
-                        <ul class="space-y-2 text-sm text-slate-600">
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rutgers"></span> Data Analysis</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rutgers"></span> Problem Solving</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rutgers"></span> Advanced Excel</li>
-                        </ul>
+                        <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100">
+                            <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium">Student Governance</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium">Advocacy</span>
+                        </div>
                     </div>
 
-                    <!-- Skill Group 3 -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200/70 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="w-10 h-10 rounded-xl bg-rutgers-light text-rutgers flex items-center justify-center text-lg mb-4">
-                            <i class="fa-solid fa-bullhorn"></i>
+                    <!-- Skill 3: Communication -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:border-slate-300 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-rutgers-light text-rutgers flex items-center justify-center text-lg mb-4">
+                                <i class="fa-solid fa-comments"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 mb-2">Communication</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">Articulating complex business concepts clearly through executive pitch presentations, stakeholder meetings, and cross-functional teams.</p>
                         </div>
-                        <h3 class="font-bold text-slate-900 mb-3">Marketing & Research</h3>
-                        <ul class="space-y-2 text-sm text-slate-600">
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rutgers"></span> Market Segmentation</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rutgers"></span> Competitor Benchmarking</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rutgers"></span> Consumer Insights</li>
-                        </ul>
+                        <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100">
+                            <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium">Pitch Presentations</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium">Stakeholder Relations</span>
+                        </div>
                     </div>
 
-                    <!-- Skill Group 4 -->
-                    <div class="bg-white p-6 rounded-2xl border border-slate-200/70 shadow-sm hover:shadow-md transition-shadow">
-                        <div class="w-10 h-10 rounded-xl bg-rutgers-light text-rutgers flex items-center justify-center text-lg mb-4">
-                            <i class="fa-solid fa-users"></i>
+                    <!-- Skill 4: Problem Solving -->
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:border-slate-300 transition-all flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-rutgers-light text-rutgers flex items-center justify-center text-lg mb-4">
+                                <i class="fa-solid fa-lightbulb"></i>
+                            </div>
+                            <h3 class="font-bold text-slate-900 mb-2">Problem Solving</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed mb-4">Approaching business challenges structuredly, analyzing root causes, and formulating practical strategic solutions.</p>
                         </div>
-                        <h3 class="font-bold text-slate-900 mb-3">Leadership</h3>
-                        <ul class="space-y-2 text-sm text-slate-600">
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rutgers"></span> Project Management</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rutgers"></span> Cross-Functional Teaming</li>
-                            <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 rounded-full bg-rutgers"></span> Executive Presentation</li>
-                        </ul>
+                        <div class="flex flex-wrap gap-1.5 pt-2 border-t border-slate-100">
+                            <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium">Strategic Thinking</span>
+                            <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-700 text-[11px] font-medium">Root Cause Analysis</span>
+                        </div>
                     </div>
 
                 </div>
@@ -193,178 +235,272 @@
             </div>
         </section>
 
-        <!-- Projects Section ("Core Business Pillars: My Work") -->
-        <section id="projects" class="max-w-6xl mx-auto px-6 sm:px-8 py-20">
-            
-            <div class="max-w-3xl mb-12">
-                <h2 class="text-3xl font-extrabold font-heading text-slate-900">Core Business Pillars: My Work</h2>
-                <p class="text-slate-600 text-base mt-2 leading-relaxed">
-                    This grid highlights sample projects demonstrating my analytical and strategic thinking across different business pillars.
-                </p>
-
-                <!-- Project Category Filters -->
-                <div class="flex flex-wrap gap-2 mt-6">
-                    <button onclick="filterProjects('all')" class="project-filter-btn active px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-900 text-white transition-all">All Pillars</button>
-                    <button onclick="filterProjects('finance')" class="project-filter-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">Finance</button>
-                    <button onclick="filterProjects('tech')" class="project-filter-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">Tech & Data</button>
-                    <button onclick="filterProjects('marketing')" class="project-filter-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600 hover:bg-slate-200 transition-all">Marketing</button>
-                </div>
-            </div>
-
-            <!-- Projects Grid -->
-            <div class="grid md:grid-cols-3 gap-8">
+        <section id="projects" class="py-20 bg-white">
+            <div class="max-w-6xl mx-auto px-6 sm:px-8">
                 
-                <!-- Project Card 1: Finance -->
-                <div class="project-card finance bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col hover:border-slate-300 hover:shadow-lg transition-all duration-300 group">
-                    <div class="h-48 bg-slate-100 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80" alt="Financial Model Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-bold text-rutgers shadow-sm uppercase tracking-wider">Finance</span>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
-                        <div>
-                            <h3 class="text-xl font-bold font-heading text-slate-900 group-hover:text-rutgers transition-colors">DCF Valuation & Portfolio Optimization</h3>
-                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
-                                Built a Discounted Cash Flow valuation model for tech equity evaluation paired with a Python portfolio risk analysis script.
-                            </p>
-                        </div>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-                            <span class="font-medium text-slate-500"><i class="fa-solid fa-code text-slate-400 mr-1"></i> Excel, Python</span>
-                            <a href="https://github.com" target="_blank" class="font-semibold text-slate-900 hover:text-rutgers flex items-center gap-1">
-                                View Code <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                            </a>
-                        </div>
-                    </div>
+                <div class="max-w-3xl mb-12">
+                    <h2 class="text-3xl font-extrabold font-heading text-slate-900">Core Business Pillars: My Work</h2>
+                    <p class="text-slate-600 text-base mt-2 leading-relaxed">
+                        This grid highlights sample projects and leadership roles demonstrating my analytical thinking, strategic marketing pitch work, and campus involvement.
+                    </p>
                 </div>
 
-                <!-- Project Card 2: Tech & Data -->
-                <div class="project-card tech bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col hover:border-slate-300 hover:shadow-lg transition-all duration-300 group">
-                    <div class="h-48 bg-slate-100 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80" alt="Data Analytics Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-bold text-rutgers shadow-sm uppercase tracking-wider">Tech & Data</span>
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
-                        <div>
-                            <h3 class="text-xl font-bold font-heading text-slate-900 group-hover:text-rutgers transition-colors">Customer Churn Prediction Engine</h3>
-                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
-                                Applied SQL data pipeline and scikit-learn machine learning algorithms to predict customer attrition with 89% accuracy.
+                <!-- Projects Grid -->
+                <div class="grid md:grid-cols-2 gap-8">
+                    
+                    <!-- Project 1: L'Oreal Brandstorm Challenge -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col justify-between hover:border-slate-300 hover:shadow-lg transition-all duration-300 p-6 group">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-full bg-rose-50 text-rutgers text-xs font-bold uppercase tracking-wider">Marketing & Strategy</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-slate-300 group-hover:text-rutgers transition-colors text-sm"></i>
+                            </div>
+                            
+                            <h3 class="text-lg font-bold font-heading text-slate-900 group-hover:text-rutgers transition-colors leading-snug">
+                                L'Oréal Brandstorm Challenge: Innovation & Market Pitch
+                            </h3>
+                            
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                                Formulated a comprehensive product innovation and go-to-market strategy. Conducted target demographic survey research, customer trend analytics, and crafted an executive pitch deck for sustainable beauty solutions.
                             </p>
-                        </div>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-                            <span class="font-medium text-slate-500"><i class="fa-solid fa-database text-slate-400 mr-1"></i> SQL, Python, Pandas</span>
-                            <a href="https://github.com" target="_blank" class="font-semibold text-slate-900 hover:text-rutgers flex items-center gap-1">
-                                Live Demo <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Project Card 3: Marketing -->
-                <div class="project-card marketing bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col hover:border-slate-300 hover:shadow-lg transition-all duration-300 group">
-                    <div class="h-48 bg-slate-100 relative overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="Marketing Strategy Project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[11px] font-bold text-rutgers shadow-sm uppercase tracking-wider">Marketing</span>
+                            <div class="flex flex-wrap gap-1.5 pt-1">
+                                <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px]">Market Research</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px]">Consumer Strategy</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px]">Pitch Deck</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-medium text-slate-500">
+                            <span>Innovation Pitch</span>
+                            <button onclick="showProjectDetails('loreal')" class="text-rutgers hover:underline font-semibold cursor-pointer">View Details →</button>
+                        </div>
                     </div>
-                    <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
-                        <div>
-                            <h3 class="text-xl font-bold font-heading text-slate-900 group-hover:text-rutgers transition-colors">Brand Positioning & Go-To-Market</h3>
-                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
-                                Comprehensive GTM expansion strategy report for a sustainable retail brand entering the North American market.
+
+                    <!-- Project 2: BAIT Major Representative (RBSGA) -->
+                    <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col justify-between hover:border-slate-300 hover:shadow-lg transition-all duration-300 p-6 group">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between">
+                                <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider">Leadership & Analytics</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-slate-300 group-hover:text-blue-600 transition-colors text-sm"></i>
+                            </div>
+
+                            <h3 class="text-lg font-bold font-heading text-slate-900 group-hover:text-rutgers transition-colors leading-snug">
+                                BAIT Major Representative (RBSGA Initiative)
+                            </h3>
+
+                            <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                                Serving as the academic advocate for Business Analytics & Information Technology students. Synthesized student feedback surveys to improve department communications, event programming, and student engagement.
                             </p>
+
+                            <div class="flex flex-wrap gap-1.5 pt-1">
+                                <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px]">RBSGA</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px]">Student Advocacy</span>
+                                <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px]">Communication</span>
+                            </div>
                         </div>
-                        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
-                            <span class="font-medium text-slate-500"><i class="fa-solid fa-chart-pie text-slate-400 mr-1"></i> Market Research</span>
-                            <a href="#about" onclick="openContactModal()" class="font-semibold text-slate-900 hover:text-rutgers flex items-center gap-1">
-                                Request Deck <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                            </a>
+
+                        <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-medium text-slate-500">
+                            <span>Student Leadership</span>
+                            <button onclick="showProjectDetails('bait')" class="text-rutgers hover:underline font-semibold cursor-pointer">View Details →</button>
                         </div>
                     </div>
+
                 </div>
 
             </div>
-
         </section>
     </main>
 
-    <!-- Contact Modal -->
-    <div id="contactModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm">
-        <div class="bg-white rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative border border-slate-100">
-            <button onclick="closeContactModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 p-2">
-                <i class="fa-solid fa-xmark text-lg"></i>
+    <div id="projectModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border border-slate-200">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-lg w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 hover:bg-slate-200 transition-colors">
+                ✕
             </button>
-            <h3 class="text-2xl font-bold font-heading text-slate-900 mb-1">Get In Touch</h3>
-            <p class="text-xs text-slate-500 mb-6">Send Riddhima a direct message or inquiry.</p>
-
-            <form onsubmit="handleContact(event)" class="space-y-4">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">Name</label>
-                    <input type="text" required placeholder="Your full name" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-rutgers">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">Email</label>
-                    <input type="email" required placeholder="your.email@example.com" class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-rutgers">
-                </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-700 mb-1">Message</label>
-                    <textarea rows="3" required placeholder="Hello Riddhima, I liked your portfolio..." class="w-full px-3.5 py-2.5 rounded-lg border border-slate-200 text-sm focus:outline-none focus:border-rutgers"></textarea>
-                </div>
-                <button type="submit" class="w-full py-3 rounded-lg bg-rutgers text-white font-semibold text-sm hover:bg-rutgers-dark transition-colors">
-                    Send Message
-                </button>
-            </form>
-            <div id="contactAck" class="hidden text-center py-6 text-emerald-600 text-sm font-semibold">
-                <i class="fa-solid fa-circle-check text-2xl mb-2 block text-emerald-500"></i>
-                Message sent successfully!
+            <div id="modalContent">
+                <!-- Modal details dynamically loaded via JavaScript -->
             </div>
         </div>
     </div>
 
-    <!-- Minimalist Footer -->
-    <footer class="border-t border-slate-100 py-8 bg-white text-xs text-slate-500">
-        <div class="max-w-6xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p>&copy; 2026 Riddhima — Rutgers Business School Portfolio.</p>
+    <footer class="bg-slate-50 border-t border-slate-200/80 py-10 mt-auto">
+        <div class="max-w-6xl mx-auto px-6 sm:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-medium">
+            <div class="flex items-center gap-2">
+                <span class="text-rutgers font-bold">RBS</span>
+                <span>© Riddhima. Rutgers Business School.</span>
+            </div>
             <div class="flex items-center gap-6">
-                <a href="#about" class="hover:text-rutgers">About</a>
-                <a href="#skills" class="hover:text-rutgers">Skills</a>
-                <a href="#projects" class="hover:text-rutgers">Projects</a>
-                <a href="https://rutgers.edu" target="_blank" class="text-rutgers font-semibold hover:underline">RBS Community</a>
+                <a href="#about" class="hover:text-slate-800 transition-colors">About</a>
+                <a href="#skills" class="hover:text-slate-800 transition-colors">Skills</a>
+                <a href="#projects" class="hover:text-slate-800 transition-colors">Projects</a>
             </div>
         </div>
     </footer>
 
     <script>
-        // Modal Handlers
+        const USER_EMAIL = "rmtrasi@gmail.com";
+
+        // Main Email Trigger Function
+        function handleEmailClick() {
+            // 1. Copy email immediately to clipboard
+            copyToClipboard(USER_EMAIL);
+
+            // 2. Show Toast Notification
+            showToast();
+
+            // 3. Open Contact Modal with options
+            openContactModal();
+        }
+
+        // Copy string to clipboard with cross-browser fallback
+        function copyToClipboard(text) {
+            if (navigator.clipboard && window.isSecureContext) {
+                navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+            } else {
+                fallbackCopy(text);
+            }
+        }
+
+        function fallbackCopy(text) {
+            try {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            } catch (e) {
+                console.warn('Clipboard copy fallback error:', e);
+            }
+        }
+
+        // Show Toast Notification
+        function showToast() {
+            const toast = document.getElementById('toastNotification');
+            if (toast) {
+                toast.classList.remove('hidden');
+                setTimeout(() => {
+                    toast.classList.add('hidden');
+                }, 3500);
+            }
+        }
+
+        // Open Contact & Email Options Modal
         function openContactModal() {
-            document.getElementById('contactModal').classList.remove('hidden');
+            const modal = document.getElementById('projectModal');
+            const content = document.getElementById('modalContent');
+            if (!modal || !content) return;
+
+            content.innerHTML = `
+                <div class="space-y-5">
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-red-50 text-rutgers flex items-center justify-center font-bold text-xl">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold font-heading text-slate-900">Get in Touch</h3>
+                            <p class="text-xs text-slate-500 font-medium">Connect directly with Riddhima</p>
+                        </div>
+                    </div>
+
+                    <!-- Email Display & Clipboard Box -->
+                    <div class="p-4 bg-slate-50 rounded-xl border border-slate-200/80 space-y-2">
+                        <span class="block text-[11px] font-bold text-rutgers uppercase tracking-wider">Email Address</span>
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="font-mono text-sm sm:text-base font-bold text-slate-800 select-all">${USER_EMAIL}</span>
+                            <button onclick="copyToClipboard('${USER_EMAIL}'); showToast();" class="px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:bg-slate-100 text-slate-700 font-semibold text-xs transition-colors flex items-center gap-1.5 shadow-sm">
+                                <i class="fa-regular fa-copy"></i> Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Direct Launch Links -->
+                    <div class="space-y-2">
+                        <span class="block text-xs font-semibold text-slate-500">Open directly with:</span>
+                        <div class="grid grid-cols-2 gap-2">
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=${USER_EMAIL}" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl border border-slate-200 hover:border-red-300 hover:bg-red-50/50 transition-all flex items-center gap-2.5 text-xs font-semibold text-slate-700">
+                                <i class="fa-brands fa-google text-red-500 text-sm"></i> Gmail Web
+                            </a>
+                            <a href="https://outlook.live.com/mail/0/deeplink/compose?to=${USER_EMAIL}" target="_blank" rel="noopener noreferrer" class="p-3 rounded-xl border border-slate-200 hover:border-blue-300 hover:bg-blue-50/50 transition-all flex items-center gap-2.5 text-xs font-semibold text-slate-700">
+                                <i class="fa-brands fa-microsoft text-blue-500 text-sm"></i> Outlook Web
+                            </a>
+                        </div>
+                        <a href="mailto:${USER_EMAIL}" class="w-full py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white text-xs font-semibold transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-envelope"></i> Open Default Email App
+                        </a>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
         }
-        function closeContactModal() {
-            document.getElementById('contactModal').classList.add('hidden');
-            document.getElementById('contactAck').classList.add('hidden');
+
+        function handleResumeDownload(event) {
+            if (event) event.preventDefault();
+            const modal = document.getElementById('projectModal');
+            const content = document.getElementById('modalContent');
+            if (!modal || !content) return;
+            
+            content.innerHTML = `
+                <div class="text-center space-y-4">
+                    <div class="w-12 h-12 bg-red-50 text-rutgers rounded-full flex items-center justify-center mx-auto text-xl">
+                        <i class="fa-solid fa-file-pdf"></i>
+                    </div>
+                    <h3 class="text-xl font-bold font-heading text-slate-900">Resume Request</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                        Riddhima's official Rutgers Business School resume is available upon request.
+                    </p>
+                    <div class="pt-2 flex justify-center gap-3">
+                        <button onclick="handleEmailClick()" class="px-5 py-2 rounded-full bg-rutgers text-white text-xs font-semibold hover:bg-rutgers-dark transition-colors">Request Resume via Email</button>
+                        <button onclick="closeModal()" class="px-5 py-2 rounded-full bg-slate-100 text-slate-700 text-xs font-semibold hover:bg-slate-200 transition-colors">Close</button>
+                    </div>
+                </div>
+            `;
+            modal.classList.remove('hidden');
         }
 
-        function handleContact(e) {
-            e.preventDefault();
-            e.target.classList.add('hidden');
-            document.getElementById('contactAck').classList.remove('hidden');
-            setTimeout(() => {
-                closeContactModal();
-                e.target.classList.remove('hidden');
-                e.target.reset();
-            }, 2500);
+        function showProjectDetails(type) {
+            const modal = document.getElementById('projectModal');
+            const content = document.getElementById('modalContent');
+            if (!modal || !content) return;
+            
+            if (type === 'loreal') {
+                content.innerHTML = `
+                    <span class="px-3 py-1 rounded-full bg-rose-50 text-rutgers text-xs font-bold uppercase tracking-wider">Case Study</span>
+                    <h3 class="text-xl font-bold font-heading text-slate-900 mt-2 mb-3">L'Oréal Brandstorm Challenge</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                        Participated in L'Oréal's global flagship innovation competition. Developed a market strategy focusing on tech-driven consumer personalization, backed by quantitative survey data and brand positioning analysis.
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-1.5 mb-5 list-disc pl-4">
+                        <li>Evaluated consumer sentiment using target demographic survey data.</li>
+                        <li>Designed go-to-market strategies and product mockups.</li>
+                        <li>Presented strategic pitch deck to industry reviewers.</li>
+                    </ul>
+                    <button onclick="closeModal()" class="w-full py-2.5 rounded-full bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition-colors">Close Overview</button>
+                `;
+            } else if (type === 'bait') {
+                content.innerHTML = `
+                    <span class="px-3 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider">RBSGA Leadership</span>
+                    <h3 class="text-xl font-bold font-heading text-slate-900 mt-2 mb-3">BAIT Major Representative</h3>
+                    <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
+                        Elected to represent the Business Analytics & Information Technology major under the Rutgers Business School Governing Association (RBSGA).
+                    </p>
+                    <ul class="text-xs text-slate-600 space-y-1.5 mb-5 list-disc pl-4">
+                        <li>Gathered qualitative & quantitative student feedback on BAIT curriculum.</li>
+                        <li>Collaborated with RBS faculty to improve BAIT workshop programming.</li>
+                        <li>Facilitated networking events connecting BAIT students with industry mentors.</li>
+                    </ul>
+                    <button onclick="closeModal()" class="w-full py-2.5 rounded-full bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition-colors">Close Overview</button>
+                `;
+            }
+            modal.classList.remove('hidden');
         }
 
-        function handleResumeDownload(e) {
-            e.preventDefault();
-            alert("Simulating resume download: Riddhima_Resume_RBS.pdf");
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            if (modal) modal.classList.add('hidden');
         }
-
-        // Project Filtering Logic
-        function filterProjects(category) {
-            const cards = document.querySelectorAll('.project-card');
-            const btns = document.querySelectorAll('.project-filter-btn');
-
-            btns.forEach(btn => {
-                btn.classList.remove('bg-slate-900', 'text-white');
-                btn.classList.add('bg-slate-100', 'text-slate-600');
-            });
-
-            event.target.classList.remove('bg-slate-100', 'text-slate-600');
+    </script>
+</body>
+</html>
