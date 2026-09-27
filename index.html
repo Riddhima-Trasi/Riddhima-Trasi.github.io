@@ -248,7 +248,7 @@
                 <!-- Projects Grid -->
                 <div class="grid md:grid-cols-2 gap-8">
                     
-                    <!-- Project 1: L'Oreal Brandstorm Challenge -->
+                    <!-- Project 1: Fiance Internship at Halo Realty -->
                     <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col justify-between hover:border-slate-300 hover:shadow-lg transition-all duration-300 p-6 group">
                         <div class="space-y-4">
                             <div class="flex items-center justify-between">
@@ -261,7 +261,7 @@
                             </h3>
                             
                             <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-"Streamlined inventory tracking by building structured Excel data models to improve operational efficiency and inventory control. Reorganized and standardized income and commission statements to enhance financial transparency and support accurate executive reporting."                            </p>
+Streamlined inventory tracking by building structured Excel data models to improve operational efficiency and inventory control. Reorganized and standardized income and commission statements to enhance financial transparency and support accurate executive reporting.</p>
 
                             <div class="flex flex-wrap gap-1.5 pt-1">
                                 <span class="px-2 py-0.5 rounded bg-slate-100 text-slate-600 text-[11px]">Financial Reporting</span>
@@ -272,7 +272,7 @@
 
                         <div class="pt-6 mt-6 border-t border-slate-100 flex items-center justify-between text-xs font-medium text-slate-500">
                             <span>Finance Internship</span>
-                            <button onclick="showProjectDetails('loreal')" class="text-rutgers hover:underline font-semibold cursor-pointer">View Details →</button>
+                            <button onclick="showProjectDetails('internship')" class="text-rutgers hover:underline font-semibold cursor-pointer">View Details →</button>
                         </div>
                     </div>
 
@@ -464,17 +464,17 @@
             const content = document.getElementById('modalContent');
             if (!modal || !content) return;
             
-            if (type === 'loreal') {
+            if (type === 'internship') {
                 content.innerHTML = `
-                    <span class="px-3 py-1 rounded-full bg-rose-50 text-rutgers text-xs font-bold uppercase tracking-wider">Case Study</span>
-                    <h3 class="text-xl font-bold font-heading text-slate-900 mt-2 mb-3">L'Oréal Brandstorm Challenge</h3>
+                    <span class="px-3 py-1 rounded-full bg-rose-50 text-rutgers text-xs font-bold uppercase tracking-wider">Internship</span>
+                    <h3 class="text-xl font-bold font-heading text-slate-900 mt-2 mb-3">Finance Internship at Halo Realty</h3>
                     <p class="text-xs sm:text-sm text-slate-600 leading-relaxed mb-4">
-                        Participated in L'Oréal's global flagship innovation competition. Developed a market strategy focusing on tech-driven consumer personalization, backed by quantitative survey data and brand positioning analysis.
+                        Streamlined inventory tracking by building structured Excel data models to improve operational efficiency and inventory control. Reorganized and standardized income and commission statements to enhance financial transparency and support accurate executive reporting.
                     </p>
                     <ul class="text-xs text-slate-600 space-y-1.5 mb-5 list-disc pl-4">
-                        <li>Evaluated consumer sentiment using target demographic survey data.</li>
-                        <li>Designed go-to-market strategies and product mockups.</li>
-                        <li>Presented strategic pitch deck to industry reviewers.</li>
+                        <li>Organized inventory.</li>
+                        <li>Designed an efficient tracking system.</li>
+                        <li>Reorganized income statement for efficiency purposes.</li>
                     </ul>
                     <button onclick="closeModal()" class="w-full py-2.5 rounded-full bg-slate-900 text-white text-xs font-semibold hover:bg-slate-800 transition-colors">Close Overview</button>
                 `;
